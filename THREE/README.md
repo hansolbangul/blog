@@ -3,18 +3,23 @@
 three.js 의 기본 설정 (렌더, 씬, 카메라, 메쉬, 애니메이션, 리사이징) 에 대한 기본적인 소스를 공유하기 위해 만들어진 페이지입니다.
 ```
 
-### html 의 canvas?
+### 실행 전 설치
+```txt
+npm i -D @babel/cli @babel/core @babel/preset-env babel-loader clean-webpack-plugin copy-webpack-plugin core-js cross-env html-webpack-plugin source-map-loader terser-webpack-plugin webpack webpack-cli webpack-dev-server
+```
+
+```txt
+npm i three
+```
 <br />
 
+### html 의 canvas?
 일종의 도화지라 생각하면 된다.
 
 도화지의 크기는 window.innerWidth 와 window.innerHeight 의 크기로 설정을 한다.
 <br />
-<br />
 
 ### THREE.WebGLRenderer ? 
-<br />
-
 ```js
 const renderer = new THREE.WebGLRenderer({
   canvas,
@@ -32,22 +37,16 @@ renderer이란 웹의 three를 랜더해주기 위해 만든다. 크기는 화�
 
 but) setPixelRatio 란 화면의 해상도는 어마어마하게 좋을 수 있으나, 블록의 화질 (pixel)이  좋지 못하다면 좋지 않은 웹의 품질을 보일 수 있다. 그렇기에 device의 pixelRatio의 값을 토대로 1의 이상일땐 2배 키우게 된다.
 <br />
-<br />
 
 ### THREE.PerspectiveCamera ?
-<br />
-
 ```js
 const scene = new THREE.Scene();
 ```
 
 scene의 경우 무대를 만드는 것이다. 해당하는 배우들(mesh), 카메라(camera)를 add를 통해 무대에 추가할 수 있고, 무조건적으로 사용해야 한다.
 <br />
-<br />
 
 ### THREE.DirectionalLight ? 
-<br />
-
 ```js
 const light = new THREE.DirectionalLight(0xffffff, 1);
 light.position.x = 1;
@@ -58,10 +57,8 @@ scene.add(light);
 ```
 는 무대의 조명을 뜻한다. 조명은 position의 x, y, z를 통해 위치를 조절할 수 있다.
 <br />
-<br />
 
 ### THREE.PerspectiveCamera ?
-<br />
 
 ```js
 const camera = new THREE.PerspectiveCamera(
@@ -94,11 +91,8 @@ camera.updateProjectionMatrix();
 scene.add(camera);
 ```
 <br />
-<br />
 
 ### THREE.Mesh ?
-<br />
-
 mesh는 무대에 들어갈 배우나 사물에 사용된다. mesh는 geometry와 material의 조합으로 만들어 진다.
 
 three.js의 공식 홈페이지에 따르면 매우 다양한 형태의 geometry 가 있다.
